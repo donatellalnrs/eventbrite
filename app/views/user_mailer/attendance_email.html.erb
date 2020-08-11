@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @user.first_name %> !</h1>
+    <p>
+      Nous avons bien reçu ta participation à l'événement <%= @event.title %> sur Eventbrite. 
+    </p>
+
+    <li>Récapitulatif de la commande:
+      <ul>Quand ? <%= @event.start_date %></ul>
+      <ul>Pendant ? <%= @event.duration %></ul>
+      <ul>Où ? <%= @event.location %></ul>
+      <ul>Quoi ? <%= @event.description %></ul>
+      <ul>Combien ? <%= @event.price %> €.</ul>
+    </li>
+    <p> À très vite sur eventbrite.fr !</p>
+  </body>
+</html>

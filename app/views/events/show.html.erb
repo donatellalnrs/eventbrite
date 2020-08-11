@@ -1,0 +1,17 @@
+<div class="jumbotron">
+  <div class="container">
+	<h1 class="display-3 text-center"><%=@event.title%> en détail !</h1>     
+  </div>
+</div>
+
+<div class="container text-center">
+  <div class="col t-4 text-center">
+	<p><em><%=@event.description%></em></p>
+	<p>Le <%=@event.start_date%></p>
+	<p>A <%=@event.location%></p>
+	<p>Pendant <%=@event.duration%> heure(s)</p>
+	<p>Pour <%=@event.price%> €</p>
+	<p>Créé par <%=User.find(@event.administrator_id).email%></p>
+	<p><a class="btn btn-secondary" href="#" role="button">Prendre sa place »</a></p>
+  </div>
+</div>

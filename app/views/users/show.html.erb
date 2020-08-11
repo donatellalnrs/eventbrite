@@ -1,0 +1,25 @@
+<div class="jumbotron">
+  <div class="container">
+	<h1 class="display-3">Votre profil Eventbrite</h1>    
+    <p><%= current_user.first_name %></p>
+    <p><%= current_user.last_name %></p>
+    <p><%= current_user.description %></p>
+    <p><%= current_user.email %></p>
+    <p><a class="btn btn-primary btn-lg" href="<%= edit_user_registration_path %>" role="button">Modifier mon email ou mon mot de passe »</a></p>
+  </div>
+</div>
+
+<div class="container text-center">
+  <div class="row">
+	<% i = 0
+	@events_admin.each do |event| %>
+	<div class="col-md-4 t-4 text-center">
+	  <h2><%=Event.find(@events_admin[i].id).title%></h2>
+	  <p>Le <%=Event.find(@events_admin[i].id).description%></p>
+	  <p><a class="btn btn-secondary" href="<%= event_path(@events_admin[i].id)%>" role="button">View details »</a></p>
+	</div>
+	<% i += 1 
+	end %>
+
+  </div>
+</div>
