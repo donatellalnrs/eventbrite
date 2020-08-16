@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def correct_user
     unless current_user == User.find(params[:id])
       flash[:danger] = "Vous ne pouvez pas réaliser cette action !"
-      redirect_to gossips_path
+      redirect_to home_path
     end 
   end 
 end

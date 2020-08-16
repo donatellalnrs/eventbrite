@@ -59,3 +59,7 @@ gem "faker"
 gem "devise"
 gem "launchy"
 gem 'dotenv-rails'
+gem 'stripe'
+gem 'bootstrap'
+gem 'mini_racer'
+gem 'execjs'

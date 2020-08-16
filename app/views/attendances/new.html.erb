@@ -1,0 +1,29 @@
+<% if @amount ==0 %>
+  <div class="row justify-content-center">
+    <%= form_for [@event, @attendance] do |f| %>
+      <div class="form-group text-right col-12">
+        <button type="submit" class="btn btn-secondary">S'inscrire à cet évent</button>
+      </div>
+    <% end %>
+  </div>
+
+<% else %>
+<%= form_tag event_attendances_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Montant: $<%= @amount%></span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button w-100"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="New attendance"
+          data-amount="<%= @amount *100%>"
+          data-locale="auto"></script>
+<% end %>
+<% end %>

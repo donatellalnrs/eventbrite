@@ -25,9 +25,16 @@
         <%= f.text_field :price, class: "form-control"%>
       </div>
       <div class="form-group text-right col-12">
-        <button type="submit" class="btn btn-warning">Créer cet évent</button>
+        <button type="submit" class="btn btn-warning">Modifier cet évent</button>
       </div>
 
       <% end %>
     </div>
 
+<div class="row justify-content-center">
+  <h3>Changer la photo de l'événement ?</h3>
+  <%= form_tag event_event_pictures_path(@event), multipart: true do %>
+    <%= file_field_tag :event_pictures %>
+    <%= submit_tag "Mettre à jour" %>
+  <% end %>
+</div>

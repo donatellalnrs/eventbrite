@@ -1,0 +1,23 @@
+<div class="jumbotron">
+  <div class="container">   
+    <h1>Les participants de votre événement en détail</h1>
+   	 <p><a class="btn btn-secondary btn-sm" href="<%= edit_event_path(params[:event_id])%>" role="button">Modifier l'événement »</a></p>
+   	 <p><a href="<%= event_path(params[:event_id]) %>" class="btn btn-dark btn-sm" data-confirm="Etes-vous sûr de votre choix?" data-method="DELETE">Annuler l'événement »</a></p>
+  </div>
+</div>
+
+<div class="container text-center">
+  <div class="row">
+	<% i = 0
+	@attendances.each do |attendance| %>
+	<div class="col-md-4 t-4 text-center">
+	  <h4>Participant <%= i+1%> </h4>
+	  <p>Email: <%=User.find(@attendances[i].user_id).email%></p>
+	  <p>Prénom: <%=User.find(@attendances[i].user_id).first_name%></p>
+	  <p>Nom: <%=User.find(@attendances[i].user_id).last_name%></p>
+	</div>
+	<% i += 1 
+	end %>
+  </div>
+
+</div>

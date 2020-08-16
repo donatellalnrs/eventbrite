@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+  has_one_attached :event_picture
+
   validates :start_date, 
     presence: true
     #impossible de créer un évent ou modif un évent du passé

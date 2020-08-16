@@ -6,12 +6,30 @@
 
 <div class="container text-center">
   <div class="col t-4 text-center">
+  	<%if @event.event_picture.attached?%>
+	  	<%= image_tag @event.event_picture, alt: 'event_picture' %>
+	  <%else%>
+  		<p>=== Il n'y a pas encore de photo lié à cet événement ===</p>
+	  <%end%>
 	<p><em><%=@event.description%></em></p>
 	<p>Le <%=@event.start_date%></p>
 	<p>A <%=@event.location%></p>
 	<p>Pendant <%=@event.duration%> heure(s)</p>
 	<p>Pour <%=@event.price%> €</p>
 	<p>Créé par <%=User.find(@event.administrator_id).email%></p>
-	<p><a class="btn btn-secondary" href="#" role="button">Prendre sa place »</a></p>
+	<p>Participants : <%=@attendants%></p>
+
+	<h3>Changer de photo ?</h3>
+	<%= form_tag event_event_pictures_path(@event), multipart: true do %>
+  	  <%= file_field_tag :event_picture %>
+  	  <%= submit_tag "Mettre à jour" %>
+	<% end %>
+
+
+	<% unless @administrator.id == current_user.id %>
+		<p><a class="btn btn-secondary" href="<%=new_event_attendance_path(@event.id)%>" role="button">Prendre sa place »</a></p>
+	<% else %> 
+		<p><a class="btn btn-secondary" href="<%=event_attendances_path(@event.id)%>" role="button">Mon espace événement</a></p>
+	<% end %>
   </div>
 </div>
